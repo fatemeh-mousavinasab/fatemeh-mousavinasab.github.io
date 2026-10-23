@@ -10,7 +10,8 @@ const links = [
   { label: 'Skills', href: '/#skills' },
   { label: 'Papers', href: '/#papers' },
   { label: 'Awards', href: '/#awards' },
-  { label: 'Contact', href: '/#contact' }
+  { label: 'Contact', href: '/#contact' },
+  { label: 'Resume', href: '/Resume.pdf', blank: true }
 ]
 </script>
 
@@ -21,7 +22,7 @@ const links = [
         <NuxtLink to="/" class="pf-hex pf-logo" aria-label="Fatemehsadat Mousavinasab, home">FM</NuxtLink>
         <q-space />
         <div class="gt-sm row items-center q-gutter-x-xs">
-          <q-btn v-for="l in links" :key="l.label" flat no-caps class="pf-btn" :label="l.label" :href="l.href" />
+          <q-btn v-for="l in links" :key="l.label" flat no-caps class="pf-btn" :label="l.label" :href="l.href" :target="l.blank ? '_blank' : undefined" />
           <q-btn flat round dense class="pf-btn" icon="fa-brands fa-google-scholar" :href="SCHOLAR_PROFILE" target="_blank" aria-label="Google Scholar" />
           <q-btn v-if="CONTACT.linkedin" flat round dense class="pf-btn" icon="fa-brands fa-linkedin" :href="CONTACT.linkedin" target="_blank" aria-label="LinkedIn" />
           <q-btn flat round dense class="pf-btn" icon="mail" :href="`mailto:${CONTACT.email}`" aria-label="Email" />
@@ -33,7 +34,7 @@ const links = [
 
     <q-drawer v-model="drawer" side="right" overlay behavior="mobile" class="pf-glass">
       <q-list padding>
-        <q-item v-for="l in links" :key="l.label" clickable :href="l.href" @click="drawer = false">
+        <q-item v-for="l in links" :key="l.label" clickable :href="l.href" :target="l.blank ? '_blank' : undefined" @click="drawer = false">
           <q-item-section>{{ l.label }}</q-item-section>
         </q-item>
         <q-item clickable :href="SCHOLAR_PROFILE" target="_blank" @click="drawer = false">

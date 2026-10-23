@@ -29,7 +29,8 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
             </p>
 
             <div class="row q-gutter-sm q-pt-sm">
-              <q-btn unelevated no-caps class="pf-btn pf-btn--solid" label="Google Scholar" icon="fa-brands fa-google-scholar" :href="SCHOLAR_PROFILE" target="_blank" />
+              <q-btn unelevated no-caps class="pf-btn pf-btn--solid" label="Resume" icon="description" href="/Resume.pdf" target="_blank" />
+              <q-btn flat no-caps class="pf-btn" label="Google Scholar" icon="fa-brands fa-google-scholar" :href="SCHOLAR_PROFILE" target="_blank" />
               <q-btn v-if="CONTACT.linkedin" flat round class="pf-btn" icon="fa-brands fa-linkedin" :href="CONTACT.linkedin" target="_blank" aria-label="LinkedIn" />
               <q-btn flat round class="pf-btn" icon="mail" :href="`mailto:${CONTACT.email}`" aria-label="Email" />
             </div>
