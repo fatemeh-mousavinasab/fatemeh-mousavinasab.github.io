@@ -5,7 +5,7 @@ export const SCHOLAR_PROFILE = 'https://scholar.google.com/citations?user=Vbdflx
 export const CONTACT = {
   email: 'fatemeh.kmls@gmail.com',
   emailUniversity: 'fmousavinasab1@gsu.edu',
-  linkedin: '' // TODO: waiting for the link
+  linkedin: 'https://www.linkedin.com/in/fatemehsadat-mousavinasab'
 }
 
 import type { AreaKey } from './areas'
