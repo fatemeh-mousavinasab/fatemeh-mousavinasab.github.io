@@ -2,11 +2,10 @@ const S = 'https://scholar.google.com/citations?view_op=view_citation&hl=en&user
 
 export const SCHOLAR_PROFILE = 'https://scholar.google.com/citations?user=VbdflxgAAAAJ&hl=en'
 
-// TODO: fill in when Salman provides them
 export const CONTACT = {
-  email: '',
-  linkedin: '',
-  other: ''
+  email: 'fatemeh.kmls@gmail.com',
+  emailUniversity: 'fmousavinasab1@gsu.edu',
+  linkedin: '' // TODO: waiting for the link
 }
 
 import type { AreaKey } from './areas'

@@ -9,7 +9,8 @@ const links = [
   { label: 'Projects', href: '/#projects' },
   { label: 'Skills', href: '/#skills' },
   { label: 'Papers', href: '/#papers' },
-  { label: 'Awards', href: '/#awards' }
+  { label: 'Awards', href: '/#awards' },
+  { label: 'Contact', href: '/#contact' }
 ]
 </script>
 
@@ -23,7 +24,7 @@ const links = [
           <q-btn v-for="l in links" :key="l.label" flat no-caps class="pf-btn" :label="l.label" :href="l.href" />
           <q-btn flat round dense class="pf-btn" icon="fa-brands fa-google-scholar" :href="SCHOLAR_PROFILE" target="_blank" aria-label="Google Scholar" />
           <q-btn v-if="CONTACT.linkedin" flat round dense class="pf-btn" icon="fa-brands fa-linkedin" :href="CONTACT.linkedin" target="_blank" aria-label="LinkedIn" />
-          <q-btn v-if="CONTACT.email" flat round dense class="pf-btn" icon="mail" :href="`mailto:${CONTACT.email}`" aria-label="Email" />
+          <q-btn flat round dense class="pf-btn" icon="mail" :href="`mailto:${CONTACT.email}`" aria-label="Email" />
         </div>
         <q-btn flat round dense class="q-ml-sm" :icon="$q.dark.isActive ? 'light_mode' : 'dark_mode'" aria-label="Toggle theme" @click="$q.dark.toggle()" />
         <q-btn flat round dense class="lt-md q-ml-xs" icon="menu" aria-label="Open menu" @click="drawer = true" />
@@ -38,6 +39,10 @@ const links = [
         <q-item clickable :href="SCHOLAR_PROFILE" target="_blank" @click="drawer = false">
           <q-item-section avatar><q-icon name="fa-brands fa-google-scholar" /></q-item-section>
           <q-item-section>Google Scholar</q-item-section>
+        </q-item>
+        <q-item clickable :href="`mailto:${CONTACT.email}`" @click="drawer = false">
+          <q-item-section avatar><q-icon name="mail" /></q-item-section>
+          <q-item-section>{{ CONTACT.email }}</q-item-section>
         </q-item>
         <q-item v-if="CONTACT.linkedin" clickable :href="CONTACT.linkedin" target="_blank" @click="drawer = false">
           <q-item-section avatar><q-icon name="fa-brands fa-linkedin" /></q-item-section>

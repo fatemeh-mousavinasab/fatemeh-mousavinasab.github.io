@@ -31,7 +31,7 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
             <div class="row q-gutter-sm q-pt-sm">
               <q-btn unelevated no-caps class="pf-btn pf-btn--solid" label="Google Scholar" icon="fa-brands fa-google-scholar" :href="SCHOLAR_PROFILE" target="_blank" />
               <q-btn v-if="CONTACT.linkedin" flat round class="pf-btn" icon="fa-brands fa-linkedin" :href="CONTACT.linkedin" target="_blank" aria-label="LinkedIn" />
-              <q-btn v-if="CONTACT.email" flat round class="pf-btn" icon="mail" :href="`mailto:${CONTACT.email}`" aria-label="Email" />
+              <q-btn flat round class="pf-btn" icon="mail" :href="`mailto:${CONTACT.email}`" aria-label="Email" />
             </div>
           </div>
 
@@ -129,11 +129,31 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
         </q-list>
       </q-card>
     </section>
+
+    <section id="contact" class="pf-container q-pb-xl">
+      <div class="text-h5 text-weight-bold q-mb-lg">Contact</div>
+      <q-card flat bordered class="pf-card">
+        <q-list separator>
+          <q-item clickable :href="`mailto:${CONTACT.email}`">
+            <q-item-section avatar><q-icon name="mail" /></q-item-section>
+            <q-item-section>{{ CONTACT.email }}</q-item-section>
+          </q-item>
+          <q-item clickable :href="`mailto:${CONTACT.emailUniversity}`">
+            <q-item-section avatar><q-icon name="fa-solid fa-building-columns" /></q-item-section>
+            <q-item-section>{{ CONTACT.emailUniversity }} (university)</q-item-section>
+          </q-item>
+          <q-item v-if="CONTACT.linkedin" clickable :href="CONTACT.linkedin" target="_blank">
+            <q-item-section avatar><q-icon name="fa-brands fa-linkedin" /></q-item-section>
+            <q-item-section>LinkedIn</q-item-section>
+          </q-item>
+        </q-list>
+      </q-card>
+    </section>
   </q-page>
 </template>
 
 <style scoped lang="scss">
-#projects, #skills, #papers, #awards { scroll-margin-top: var(--pf-header-h); }
+#projects, #skills, #papers, #awards, #contact { scroll-margin-top: var(--pf-header-h); }
 .pf-card { background: var(--pf-surface); border-color: var(--pf-line); border-radius: var(--pf-radius-card); box-shadow: var(--pf-shadow); }
 .pf-reading { font-family: var(--pf-reading); line-height: 1.6; }
 
