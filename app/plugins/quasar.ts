@@ -1,5 +1,8 @@
 import { Quasar } from 'quasar'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.use(Quasar, { plugins: {} })
+  nuxtApp.vueApp.use(Quasar, {
+    plugins: {},
+    config: { dark: false }
+  })
 })

@@ -9,48 +9,16 @@ export const CONTACT = {
   other: ''
 }
 
-export const projects = [
-  {
-    title: 'PhD research',
-    place: 'Georgia State University',
-    period: '2022 – present',
-    points: [
-      'Studying the ontogeny and function of T lymphocytes in autoimmune diseases (celiac disease, systemic autoimmunity) using genetically manipulated mice.',
-      'Developing a novel mouse model to investigate the role of peripheral regulatory T cells (pTregs) in oral tolerance to gluten in celiac disease.',
-      'Identifying autoreactive CD4⁺Foxp3⁻ T-cell clones in humanized HLA-DQ8/Ab⁻/⁻ mice using Nur77-GFP T-cell hybridomas.',
-      'Establishing CD4⁺ hybridomas specific for human class II MHC/peptide complexes (published as a Bio-protocol).'
-    ],
-    link: { label: 'Read the Bio-protocol paper', href: S + '5nxA0vEk-isC' }
-  },
-  {
-    title: "Master's dissertation",
-    place: 'Shahid Beheshti University',
-    period: '2013 – 2016',
-    points: [
-      'Counted regulatory T cells in the esophageal tissue of eosinophilic esophagitis patients and compared them with GERD and control groups.'
-    ],
-    link: { label: 'Read the paper', href: S + 'u-x6o8ySG0sC' }
-  },
-  {
-    title: 'Research Institute for Gastroenterology & Liver Diseases',
-    place: 'Tehran, Iran',
-    period: '2019',
-    points: [
-      'Designed IBD projects on immunologic responses, including macrophage polarization during acute inflammation and after treatment.'
-    ]
-  },
-  {
-    title: 'GenIran Research Lab',
-    place: 'Tehran, Iran',
-    period: '2020 – 2022',
-    points: [
-      'Ran research projects that required immunoassay techniques.',
-      'Founded a comprehensive practical immunoassay course.',
-      'Taught a molecular genetics training course.',
-      'Managed quality control under ISO 17025.'
-    ]
-  }
-]
+import type { AreaKey } from './areas'
+
+export interface Project {
+  slug: string
+  name: string
+  area: AreaKey
+  summary: string
+  tags: string[]
+  link?: { label: string; href: string }
+}
 
 export const skills = [
   {
@@ -119,4 +87,41 @@ export const awards = [
   { text: 'FIMSA travel grant', when: 'October 2019, Jaipur, India' },
   { text: 'EFIS travel grant, SEEIS 2018', when: 'October 2018, Yerevan, Armenia' },
   { text: 'EAACI junior member travel grant', when: 'June 2017, Helsinki' }
+]
+
+export const projects: Project[] = [
+  {
+    slug: 'phd',
+    name: 'PhD research: how Tregs keep us tolerant to gluten',
+    area: 'tcell',
+    summary:
+      'Georgia State University, 2022 – present. Studying how T lymphocytes develop and work in autoimmune diseases such as celiac disease, using genetically manipulated mice. Built a new mouse model to test the role of peripheral regulatory T cells (pTregs) in oral tolerance to gluten, and found autoreactive CD4⁺Foxp3⁻ T-cell clones in humanized HLA-DQ8 mice using Nur77-GFP hybridomas. The hybridoma method is published as a Bio-protocol.',
+    tags: ['Celiac disease', 'pTregs', 'HLA-DQ8 mice', 'Nur77-GFP', 'Hybridomas', 'Flow cytometry'],
+    link: { label: 'Read the paper', href: S + '5nxA0vEk-isC' }
+  },
+  {
+    slug: 'masters',
+    name: "Master's dissertation: Tregs in eosinophilic esophagitis",
+    area: 'gut',
+    summary:
+      'Shahid Beheshti University, 2013 – 2016. Counted regulatory T cells in the esophageal tissue of eosinophilic esophagitis patients and compared them with GERD and control groups.',
+    tags: ['Eosinophilic esophagitis', 'Tregs', 'GERD', 'Human tissue'],
+    link: { label: 'Read the paper', href: S + 'u-x6o8ySG0sC' }
+  },
+  {
+    slug: 'rigld',
+    name: 'IBD immunology projects',
+    area: 'gut',
+    summary:
+      'Research Institute for Gastroenterology & Liver Diseases, Tehran, 2019. Designed projects on immunologic responses in IBD, including macrophage polarization during acute inflammation and after treatment.',
+    tags: ['IBD', 'Macrophage polarization', 'Study design']
+  },
+  {
+    slug: 'geniran',
+    name: 'Immunoassay research, teaching and quality control',
+    area: 'lab',
+    summary:
+      'GenIran Research Lab, Tehran, 2020 – 2022. Ran research projects that needed immunoassay techniques, founded a practical immunoassay course, taught a molecular genetics course, and managed quality control under ISO 17025.',
+    tags: ['Immunoassays', 'ISO 17025', 'Teaching', 'Quality control']
+  }
 ]
