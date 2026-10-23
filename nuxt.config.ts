@@ -12,7 +12,8 @@ export default defineNuxtConfig({
   },
   css: [
     '@quasar/extras/material-icons/material-icons.css',
-    'quasar/src/css/index.sass'
+    'quasar/src/css/index.sass',
+    '~/assets/css/theme.scss'
   ],
   build: { transpile: ['quasar'] },
   vite: {
