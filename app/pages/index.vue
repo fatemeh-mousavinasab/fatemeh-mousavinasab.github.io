@@ -36,11 +36,20 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
             </div>
           </div>
 
-          <div class="col-12 col-md-6">
-            <AreaPentagon />
+          <div class="col-12 col-md-6 flex flex-center">
+            <div class="pf-photo">
+              <div class="pf-photo__img">
+                <img src="/fatemeh.webp" alt="Fatemehsadat Mousavinasab holding a cell-culture plate up to the light in the laboratory" width="900" height="900">
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </section>
+
+    <section id="areas" class="pf-container q-pt-xl">
+      <div class="text-h5 text-weight-bold">Research areas</div>
+      <div class="flex flex-center q-mt-md"><AreaPentagon /></div>
     </section>
 
     <section id="projects" class="pf-container q-py-xl">
@@ -164,6 +173,23 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
 #projects, #leadership, #skills, #papers, #awards, #contact { scroll-margin-top: var(--pf-header-h); }
 .pf-card { background: var(--pf-surface); border-color: var(--pf-line); border-radius: var(--pf-radius-card); box-shadow: var(--pf-shadow); }
 .pf-reading { font-family: var(--pf-reading); line-height: 1.6; }
+
+.pf-photo {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1.1547;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--pf-tcell), var(--pf-lab));
+  // Flat-top hexagon, same shape as the site's other hex badges.
+  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  &__img {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    background: var(--pf-surface);
+    img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; display: block; }
+  }
+}
 
 .pf-hero {
   position: relative; overflow: hidden; border-radius: var(--pf-radius-card); padding: 56px;
