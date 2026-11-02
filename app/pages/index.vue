@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-  SCHOLAR_PROFILE, CONTACT, projects, skills, publications,
+  SCHOLAR_PROFILE, CONTACT, projects, leadership, skills, publications,
   presentations, peerReview, judging, awards
 } from '~/data/portfolio'
 
@@ -24,8 +24,8 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
             </div>
 
             <p class="pf-hero__lede q-mb-none">
-              Studying how T lymphocytes develop, are tolerized, and go wrong in autoimmunity. Celiac disease,
-              regulatory T cells, and gut inflammation. 11 publications.
+              Ph.D. immunologist studying mucosal immunity and regulatory T cells in autoimmune and allergic disease.
+              I build disease models, develop assays, and create antigen-specific T-cell tools.
             </p>
 
             <div class="row q-gutter-sm q-pt-sm">
@@ -50,6 +50,13 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
       </div>
     </section>
 
+    <section id="leadership" class="pf-container q-pb-xl">
+      <div class="text-h5 text-weight-bold q-mb-lg">Leadership</div>
+      <div class="column q-gutter-y-lg">
+        <ProjectCard v-for="p in leadership" :key="p.slug" :project="p" />
+      </div>
+    </section>
+
     <section id="skills" class="pf-container q-pb-xl">
       <div class="text-h5 text-weight-bold q-mb-lg">Skills</div>
       <div class="row q-col-gutter-md">
@@ -69,7 +76,7 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
     <section id="papers" class="pf-container q-pb-xl">
       <div class="text-h5 text-weight-bold">Papers, peer review and judging</div>
       <p class="pf-muted q-mt-sm q-mb-lg">
-        11 publications. Each title opens its Google Scholar page.
+        10 publications. Each title opens its Google Scholar page.
         <a :href="SCHOLAR_PROFILE" target="_blank" rel="noopener">See the full profile →</a>
       </p>
       <q-card flat bordered class="pf-card">
@@ -154,7 +161,7 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
 </template>
 
 <style scoped lang="scss">
-#projects, #skills, #papers, #awards, #contact { scroll-margin-top: var(--pf-header-h); }
+#projects, #leadership, #skills, #papers, #awards, #contact { scroll-margin-top: var(--pf-header-h); }
 .pf-card { background: var(--pf-surface); border-color: var(--pf-line); border-radius: var(--pf-radius-card); box-shadow: var(--pf-shadow); }
 .pf-reading { font-family: var(--pf-reading); line-height: 1.6; }
 
@@ -166,6 +173,6 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
   &__name { font-family: var(--pf-display); font-size: clamp(28px, 3.6vw, 42px); line-height: 1.15; font-weight: 600; letter-spacing: 0.02em; }
   &__role { margin-top: 8px; font-size: clamp(18px, 2.2vw, 22px); font-weight: 500; color: var(--pf-muted); }
   &__location { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: var(--pf-radius-control); font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pf-text); }
-  &__lede { font-size: clamp(17px, 1.7vw, 20px); line-height: 1.55; font-weight: 500; max-width: 42ch; color: var(--pf-text); }
+  &__lede { font-size: clamp(17px, 1.7vw, 20px); line-height: 1.55; font-weight: 500; max-width: 52ch; color: var(--pf-text); }
 }
 </style>

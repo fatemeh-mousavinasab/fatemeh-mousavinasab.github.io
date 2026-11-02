@@ -1,4 +1,4 @@
-import { projects } from './portfolio'
+import { projects, leadership } from './portfolio'
 
 // Evenly spaced hues; the chip CSS turns each into a soft pastel for both themes.
 const hues = [0, 28, 48, 85, 140, 168, 192, 212, 236, 262, 288, 322]
@@ -13,7 +13,7 @@ const hueDistance = (a: number, b: number) => {
 const tagHue = new Map<string, number>()
 const usage = new Map<number, number>()
 
-for (const project of projects) {
+for (const project of [...projects, ...leadership]) {
   project.tags.forEach((tag, i) => {
     if (tagHue.has(tag)) return
     const neighbours = [project.tags[i - 1], project.tags[i + 1], project.tags[i - 2]]

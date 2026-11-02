@@ -7,6 +7,7 @@ const drawer = ref(false)
 
 const links = [
   { label: 'Projects', href: '/#projects' },
+  { label: 'Leadership', href: '/#leadership' },
   { label: 'Skills', href: '/#skills' },
   { label: 'Papers', href: '/#papers' },
   { label: 'Awards', href: '/#awards' },

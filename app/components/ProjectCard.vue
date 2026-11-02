@@ -5,6 +5,10 @@ import { tagHueOf } from '~/data/tags'
 
 const props = defineProps<{ project: Project }>()
 const skill = computed(() => skillByKey(props.project.area))
+const icon = computed(() => props.project.icon ?? skill.value.icon)
+const first = computed(() => props.project.body[0])
+const rest = computed(() => props.project.body.slice(1))
+const open = ref(false)
 
 // The half-hexagon is as tall as the card, so its width follows the card's height.
 const card = ref<HTMLElement>()
@@ -27,18 +31,28 @@ onBeforeUnmount(() => observer?.disconnect())
     :style="{ '--c': skillColor(project.area), '--card-h': `${cardHeight}px` }"
   >
     <div class="pf-project__badge gt-xs" aria-hidden="true">
-      <q-icon :name="skill.icon" class="pf-project__badge-icon" />
+      <q-icon :name="icon" class="pf-project__badge-icon" />
     </div>
 
     <div class="pf-project__body column q-gutter-y-sm">
       <div class="row items-center no-wrap q-gutter-x-sm">
         <div class="pf-hex pf-hex--tint xs">
-          <q-icon :name="skill.icon" size="18px" />
+          <q-icon :name="icon" size="18px" />
         </div>
         <div class="pf-project__name">{{ project.name }}</div>
       </div>
 
-      <p class="pf-project__summary pf-muted q-my-none">{{ project.summary }}</p>
+      <div v-if="project.meta" class="pf-project__meta pf-mono">{{ project.meta }}</div>
+
+      <p class="pf-project__summary pf-muted q-my-none">{{ first }}</p>
+      <q-slide-transition>
+        <div v-show="open">
+          <template v-for="(b, i) in rest" :key="i">
+            <blockquote v-if="typeof b !== 'string'" class="pf-project__cite pf-muted">{{ b.cite }}</blockquote>
+            <p v-else class="pf-project__summary pf-muted q-my-none">{{ b }}</p>
+          </template>
+        </div>
+      </q-slide-transition>
 
       <div class="pf-tags">
         <q-chip
@@ -51,8 +65,20 @@ onBeforeUnmount(() => observer?.disconnect())
         />
       </div>
 
-      <div v-if="project.link" class="row justify-end">
+      <div class="row items-center justify-between">
         <q-btn
+          v-if="rest.length"
+          flat
+          no-caps
+          class="pf-btn"
+          :label="open ? 'Show less' : 'Read more'"
+          :icon-right="open ? 'expand_less' : 'expand_more'"
+          :aria-expanded="open"
+          @click="open = !open"
+        />
+        <span v-else />
+        <q-btn
+          v-if="project.link"
           unelevated
           no-caps
           class="pf-btn pf-btn--accent"
@@ -70,7 +96,9 @@ onBeforeUnmount(() => observer?.disconnect())
 <style scoped lang="scss">
 /* why-no-Quasar: card with a card-height half hexagon tucked under its left edge */
 .pf-project {
-  --badge-w: calc(var(--card-h) * 0.577);
+  // Capped so a long, expanded card does not stretch the badge (and squeeze the text) in a loop.
+  --badge-h: min(var(--card-h), 360px);
+  --badge-w: calc(var(--badge-h) * 0.577);
   position: relative;
   overflow: hidden;
   background: var(--pf-surface);
@@ -88,7 +116,7 @@ onBeforeUnmount(() => observer?.disconnect())
     position: absolute;
     left: 0;
     top: 0;
-    bottom: 0;
+    height: var(--badge-h);
     width: var(--badge-w);
     display: flex;
     align-items: center;
@@ -111,6 +139,21 @@ onBeforeUnmount(() => observer?.disconnect())
     font-weight: 800;
     letter-spacing: -0.01em;
     line-height: 1.2;
+  }
+
+  &__meta {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--pf-muted);
+  }
+
+  &__cite {
+    margin: 0 0 16px;
+    padding-left: 16px;
+    border-left: 3px solid var(--c);
+    font-family: var(--pf-reading);
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   &__summary {
