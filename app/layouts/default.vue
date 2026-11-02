@@ -67,7 +67,11 @@ const links = [
 </template>
 
 <style scoped lang="scss">
-.pf-header { color: var(--pf-text); border-width: 0; border-radius: 0; box-shadow: var(--pf-header-shadow); }
+.pf-header {
+  color: var(--pf-text); border-width: 0; border-radius: 0; box-shadow: var(--pf-header-shadow);
+  // Solid, so page content does not show through while scrolling.
+  background: var(--pf-surface); backdrop-filter: none; -webkit-backdrop-filter: none;
+}
 .pf-footer { background: transparent; border-top: 1px solid var(--pf-line); }
 .pf-logo {
   width: 36px; height: 40px; background: var(--pf-text); color: var(--pf-bg);
