@@ -13,7 +13,7 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
       <div class="pf-hero pf-dark-panel">
         <div class="pf-hero__glow" aria-hidden="true" />
         <div class="row items-center q-col-gutter-xl pf-hero__content">
-          <div class="col-12 col-md-6 column q-gutter-y-lg">
+          <div class="col-12 col-md-7 column q-gutter-y-lg">
             <div>
               <h1 class="pf-hero__name q-my-none">Fatemehsadat Mousavinasab, Ph.D.</h1>
               <div class="pf-hero__role">Immunologist</div>
@@ -36,21 +36,16 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
             </div>
           </div>
 
-          <div class="col-12 col-md-6 flex flex-center">
-            <div class="pf-photo">
-              <div class="pf-photo__img">
-                <img src="/fatemeh.webp" alt="Fatemehsadat Mousavinasab holding a cell-culture plate up to the light in the laboratory" width="900" height="900">
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
+    <!-- Research areas diagram, hidden for now (waiting for instructions):
     <section id="areas" class="pf-container q-pt-xl">
       <div class="text-h5 text-weight-bold">Research areas</div>
       <div class="flex flex-center q-mt-md"><AreaPentagon /></div>
     </section>
+    -->
 
     <section id="projects" class="pf-container q-py-xl">
       <div class="text-h5 text-weight-bold q-mb-lg">Projects</div>
@@ -174,28 +169,15 @@ useHead({ title: 'Fatemehsadat Mousavinasab, Ph.D. | Immunology' })
 .pf-card { background: var(--pf-surface); border-color: var(--pf-line); border-radius: var(--pf-radius-card); box-shadow: var(--pf-shadow); }
 .pf-reading { font-family: var(--pf-reading); line-height: 1.6; }
 
-.pf-photo {
-  width: 100%;
-  max-width: 380px;
-  aspect-ratio: 1.1547;
-  padding: 4px;
-  background: linear-gradient(135deg, var(--pf-tcell), var(--pf-lab));
-  // Flat-top hexagon, same shape as the site's other hex badges.
-  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
-  &__img {
-    width: 100%;
-    height: 100%;
-    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
-    background: var(--pf-surface);
-    img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; display: block; }
-  }
-}
-
 .pf-hero {
-  position: relative; overflow: hidden; border-radius: var(--pf-radius-card); padding: 56px;
+  position: relative; overflow: hidden; border-radius: var(--pf-radius-card); padding: 56px; min-height: 440px; display: flex; align-items: center;
+  // Photo is mirrored so she stands on the right and the text sits on the plain wall at the left.
+  background-image: linear-gradient(90deg, rgba(12, 22, 48, 0.94) 0%, rgba(12, 22, 48, 0.82) 42%, rgba(12, 22, 48, 0.12) 75%), url('/fatemeh-hero.webp');
+  background-size: cover; background-position: right 35%;
+  @media (max-width: 599px) { background-image: linear-gradient(180deg, rgba(12, 22, 48, 0.92) 0%, rgba(12, 22, 48, 0.8) 100%), url('/fatemeh-hero.webp'); }
   @media (max-width: 599px) { padding: 28px 20px; }
   &__glow { position: absolute; right: -10%; top: -20%; width: 60%; height: 140%; background: radial-gradient(closest-side, rgba(255, 255, 255, 0.07), transparent); }
-  &__content { position: relative; }
+  &__content { position: relative; width: 100%; }
   &__name { font-family: var(--pf-display); font-size: clamp(28px, 3.6vw, 42px); line-height: 1.15; font-weight: 600; letter-spacing: 0.02em; }
   &__role { margin-top: 8px; font-size: clamp(18px, 2.2vw, 22px); font-weight: 500; color: var(--pf-muted); }
   &__location { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: var(--pf-radius-control); font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--pf-text); }
